@@ -4,14 +4,6 @@ import { ProductContext } from "@/app/product.context";
 import Link from "next/link";
 import { useContext } from "react";
 
-// interface IProduct {
-// 	name: string,
-// 	color: string,
-// 	type: string,
-// 	price: number,
-// 	sku: string,
-// };
-
 export default function ProductList({ }) {
 	const { products } = useContext(ProductContext);
 	return (
