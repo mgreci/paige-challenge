@@ -25,8 +25,6 @@ export default function ProductDetail({ params: { sku } }: { params: { sku: stri
 	};
 
 	const handleUpdate = () => {
-		// obtain form values
-
 		// validate
 		const errors = [];
 
@@ -49,6 +47,7 @@ export default function ProductDetail({ params: { sku } }: { params: { sku: stri
 			errors.push("Color must be set and have maximum length is 56 characters");
 		}
 
+		// if any errors, set and exit
 		if (errors.length > 0) {
 			setErrors(errors);
 			return;
