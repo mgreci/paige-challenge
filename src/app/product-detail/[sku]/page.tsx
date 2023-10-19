@@ -1,6 +1,7 @@
 'use client';
 
 import { ProductContext } from "@/app/product.context";
+import Link from "next/link";
 import { useContext, useState } from "react";
 
 import classes from "./page.module.css";
@@ -66,6 +67,7 @@ export default function ProductDetail({ params: { sku } }: { params: { sku: stri
 	return (
 		<>
 			<h1>Product: {sku}</h1>
+			<h3><Link href="/product-list">View all products</Link></h3>
 			<form className={classes.productDetail}>
 				<label className={classes.detailLabel} htmlFor="name">Name</label>
 				<input id="name" type="text" defaultValue={name} onChange={event => handleProductChange("name", event.target.value)}/>
