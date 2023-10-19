@@ -2,7 +2,7 @@
 
 import { ProductContext } from "@/app/product.context";
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { IProduct } from "../product.interface";
 import classes from './page.module.css';
 
@@ -11,10 +11,27 @@ import classes from './page.module.css';
 const generateProductKey = (id: string, sku: string) => `${id}-${sku}`;
 
 export default function ProductList({ }) {
-	const { products }: { products: IProduct} = useContext(ProductContext)!;
+	const { products, filter }: { products: IProduct[], filter: Function} = useContext(ProductContext)!;
+	const [filterByColor, setFilterByColor] = useState("");
+
+	const handleFilterProducts = () => {
+		filter(filterByColor);
+	};
+
+	const resetFilter = () => {
+		setFilterByColor("");
+		filter("");
+	}
+
 	return (
 		<>
 			<h1>Product List</h1>
+			<div className={classes.filterSection}>
+				<label htmlFor="colorFilter">Filter by Color</label>
+				<input id="colorFilter" type="text" value={filterByColor} onChange={event => setFilterByColor(event.target.value)} />
+				<button type="button" onClick={handleFilterProducts}>Filter</button>
+				<button type="button" onClick={resetFilter}>Reset</button>
+			</div>
 			<table className={classes.table}>
 				<thead>
 					<tr>
