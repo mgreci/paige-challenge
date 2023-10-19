@@ -51,8 +51,7 @@ export default function ProductList({ }) {
 								<td>{type}</td>
 								<td>{price}</td>
 								<td>
-									<button type="button">Edit</button>
-									<button type="button"><Link href={`/product-detail/${sku}`}>View</Link></button>
+									<button type="button"><Link href={`/product-detail/${sku}`}>Edit</Link></button>
 								</td>
 							</tr>
 						))}
