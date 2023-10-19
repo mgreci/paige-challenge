@@ -1,5 +1,14 @@
-.table {
+.tableWrapper {
 	width: 80%;
 	margin: 1rem auto;
+}
+
+.filterSection {
+	text-align: left;
+	margin-bottom: 1rem;
+}
+
+.table {
+	width: 100%;
 	text-align: left;
 }

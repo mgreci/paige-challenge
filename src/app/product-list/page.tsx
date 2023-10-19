@@ -26,37 +26,39 @@ export default function ProductList({ }) {
 	return (
 		<>
 			<h1>Product List</h1>
-			<div className={classes.filterSection}>
-				<label htmlFor="colorFilter">Filter by Color</label>
-				<input id="colorFilter" type="text" value={filterByColor} onChange={event => setFilterByColor(event.target.value)} />
-				<button type="button" onClick={handleFilterProducts}>Filter</button>
-				<button type="button" onClick={resetFilter}>Reset</button>
-			</div>
-			<table className={classes.table}>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Color</th>
-						<th>Type</th>
-						<th>Cost</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					{products?.map(({ id, name, color, type, price, sku }) => (
-						<tr key={generateProductKey(id, sku)}> 
-							<td>{name}</td>
-							<td>{color}</td>
-							<td>{type}</td>
-							<td>{price}</td>
-							<td>
-								<button type="button">Edit</button>
-								<button type="button"><Link href={`/product-detail/${sku}`}>View</Link></button>
-							</td>
+			<div className={classes.tableWrapper}>
+				<div className={classes.filterSection}>
+					<label htmlFor="colorFilter">Filter by Color</label>
+					<input id="colorFilter" type="text" value={filterByColor} onChange={event => setFilterByColor(event.target.value)} />
+					<button type="button" onClick={handleFilterProducts}>Filter</button>
+					<button type="button" onClick={resetFilter}>Reset</button>
+				</div>
+				<table className={classes.table}>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Color</th>
+							<th>Type</th>
+							<th>Cost</th>
+							<th></th>
 						</tr>
-					))}
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						{products?.map(({ id, name, color, type, price, sku }) => (
+							<tr key={generateProductKey(id, sku)}> 
+								<td>{name}</td>
+								<td>{color}</td>
+								<td>{type}</td>
+								<td>{price}</td>
+								<td>
+									<button type="button">Edit</button>
+									<button type="button"><Link href={`/product-detail/${sku}`}>View</Link></button>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
 		</>
 	)
 };
