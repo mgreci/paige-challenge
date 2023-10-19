@@ -19,15 +19,20 @@ export default function ProductDetail({ params: { sku } }: { params: { sku: stri
 
 	return (
 		<>
-			<h1>Product Detail {sku}</h1>
+			<h1>Product: {sku}</h1>
 			<form className={classes.productDetail}>
-				<input type="text" defaultValue={name} />
-				<input type="text" defaultValue={type} />
-				<input type="text" defaultValue={description} />
-				<input type="text" defaultValue={color} />
-				<input type="number" step="0.01" defaultValue={price} />
-				<button type="button" onClick={handleUpdate}>Update</button>
+				<label className={classes.detailLabel} htmlFor="name">Name</label>
+				<input id="name" type="text" defaultValue={name} />
+				<label className={classes.detailLabel} htmlFor="type">Type</label>
+				<input id="type" type="text" defaultValue={type} />
+				<label className={classes.detailLabel} htmlFor="description">Description</label>
+				<input id="description" type="text" defaultValue={description} />
+				<label className={classes.detailLabel} htmlFor="color">Color</label>
+				<input id="color" type="text" defaultValue={color} />
+				<label className={classes.detailLabel} htmlFor="price">Price</label>
+				<input id="price" type="number" step="0.01" defaultValue={price} />
 			</form>
+			<button type="button" className={classes.update} onClick={handleUpdate}>Update</button>
 		</>
 	)
 };

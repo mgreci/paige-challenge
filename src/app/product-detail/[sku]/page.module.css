@@ -1,4 +1,13 @@
 .productDetail {
 	display: flex;
 	flex-direction: column;
+	width: 30rem;
+}
+
+.detailLabel {
+	margin-top: 1rem;
+}
+
+.update {
+	margin-top: 1rem;
 }
