@@ -1,8 +1,9 @@
-import type { Metadata } from 'next'
-import { Roboto } from 'next/font/google'
-import './globals.css'
+import type { Metadata } from 'next';
+import { Roboto } from 'next/font/google';
+import './globals.css';
+import { ProductContextProvider } from './product.context';
 
-const font = Roboto({ weight: "500", subsets: ['latin'] })
+const font = Roboto({ weight: "500", subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <ProductContextProvider>{children}</ProductContextProvider>
+      </body>
     </html>
   )
 }
