@@ -14,6 +14,7 @@ export default function ProductDetail({ params: { sku } }: { params: { sku: stri
 	const { name, type, description, color, price } = product;
 
 	const [modifiedProduct, setModifiedProduct] = useState(product);
+	const [errors, setErrors]: [string[], Function] = useState([]);
 
 	const handleProductChange = (property: string, value: string|number) => {
 		setModifiedProduct({
@@ -26,6 +27,34 @@ export default function ProductDetail({ params: { sku } }: { params: { sku: stri
 		// obtain form values
 
 		// validate
+		const errors = [];
+
+		// price must be >= 0
+		const { price, type, description, color } = modifiedProduct;
+		if (isNaN(price) || price < 0) {
+			errors.push("Price must be a number and greater than zero (0)");
+		}
+	
+		// type, description, color required and max length of 56 chars
+		if (!type || type.length === 0 || type.length > 56) {
+			errors.push("Type must be set and have maximum length is 56 characters");
+		}
+
+		if (!description || description.length === 0 || description.length > 56) {
+			errors.push("Description must be set and have maximum length is 56 characters");
+		}
+
+		if (!color || color.length === 0 || color.length > 56) {
+			errors.push("Color must be set and have maximum length is 56 characters");
+		}
+
+		if (errors.length > 0) {
+			setErrors(errors);
+			return;
+		}
+
+		// clear errors
+		setErrors([]);
 
 		// update product
 		update(product.id, modifiedProduct);
@@ -49,6 +78,11 @@ export default function ProductDetail({ params: { sku } }: { params: { sku: stri
 				<label className={classes.detailLabel} htmlFor="price">Price</label>
 				<input id="price" type="number" step="0.01" defaultValue={price} onChange={event => handleProductChange("price", event.target.value)}/>
 			</form>
+			<div className={classes.errorMessages}>
+				{errors?.map((error, index) => (
+					<span key={index} className={classes.error}>{error}</span>
+				))}
+			</div>
 			<button type="button" className={classes.update} onClick={handleUpdate}>Update</button>
 		</>
 	)

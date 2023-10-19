@@ -11,3 +11,13 @@
 .update {
 	margin-top: 1rem;
 }
+
+.errorMessages {
+	display: flex;
+	flex-direction: column;
+	margin-top: 1rem;
+}
+
+.error {
+	color: red;
+}
