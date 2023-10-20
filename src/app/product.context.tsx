@@ -3,7 +3,7 @@
 import { createContext, useState } from 'react';
 
 // NOTE: possible typo in that there are two objects with the same id value.
-import allProducts from './product-fixtures.json';
+import allProducts from '@/product-fixtures.json';
 import { removeDuplicates } from '@/util';
 import { IProduct } from './product.interface';
 
