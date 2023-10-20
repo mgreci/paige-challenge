@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import './globals.css';
-import { ProductContextProvider } from './product.context';
+import { ProductContextProvider } from '../product.context';
 
 const font = Roboto({ weight: "500", subsets: ['latin'] });
 

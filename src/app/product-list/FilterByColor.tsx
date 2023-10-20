@@ -1,4 +1,4 @@
-import { ProductContext } from "@/app/product.context";
+import { ProductContext } from "@/product.context";
 import { useContext, useState } from "react";
 import classes from './page.module.css';
 import { removeDuplicates } from "@/util";

@@ -1,4 +1,4 @@
-import { ProductContext } from "@/app/product.context";
+import { ProductContext } from "@/product.context";
 import Link from "next/link";
 import { useContext } from "react";
 import { IProduct } from "../../product.interface";
