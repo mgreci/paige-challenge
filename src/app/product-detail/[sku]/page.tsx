@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 export default function ProductDetail({ params: { sku } }: { params: { sku: string } }) {
 	const router = useRouter();
 	const { searchBySku, update } = useContext(ProductContext);
-	const product: IProduct  = searchBySku(sku)!;
+	const product: IProduct = searchBySku(sku)!;
 	const { name, type, description, color, price } = product;
 
 	const [modifiedProduct, setModifiedProduct] = useState(product);

@@ -2,7 +2,7 @@
 
 import { ProductContext } from "@/app/product.context";
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { IProduct } from "../product.interface";
 import classes from './page.module.css';
 import FilterByColor from "./FilterByColor";
