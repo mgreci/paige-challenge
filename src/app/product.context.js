@@ -5,10 +5,17 @@ import { createContext, useState } from 'react';
 // NOTE: possible typo in that there are two objects with the same id value.
 import allProducts from './product-fixtures.json';
 
-export const ProductContext = createContext({});
+export const ProductContext = createContext({
+  products: [],
+  colorOptions: [],
+  searchBySku: () => {},
+  update: () => {},
+  filter: () => {}
+});
 
 export const ProductContextProvider = ({ children }) => {
   const [products, setProducts] = useState(allProducts);
+  const colorOptions = [];
 
   const searchBySku = (searchSku) => {
     return products?.find(({ sku }) => searchSku === sku);
@@ -39,7 +46,7 @@ export const ProductContextProvider = ({ children }) => {
   }
 
   return (
-    <ProductContext.Provider value={{ products, searchBySku, update, filter }}>
+    <ProductContext.Provider value={{ products, colorOptions, searchBySku, update, filter }}>
 			{children}
 		</ProductContext.Provider>
   );
