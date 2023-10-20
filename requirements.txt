@@ -1,0 +1,13 @@
+Paige Ecommerce Widget
+You will create an ecommerce widget to read, update, and delete products using Next.js V13. The goal of this project is to test your experience of Typescript using the Next framework. For the front end design you may use a component library such as Material UI as well as custom HTML/CSS. You will load the product data via a provided JSON data file.
+Requirements:
+1. Product List Page (/product-list) - This page will include a table of products given to you
+	a. In each row display the following in each column: i. name, color, type, and cost
+	b. The last column should have one button
+		i. Edit - route to /product-detail/{sku}
+	c. Filter
+		i. Filter by color
+2. Product Detail Page /product-detail/{sku}
+	a. Display name, type, description, color, and price and be able to edit each field
+	b. Include update button that will save the product data and re route back to /product-list page
+	c. Include validation for price to not be less than 0 and type, description, and color to be required and less than 56 characters long.
