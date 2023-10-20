@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useContext, useState } from "react";
 
 import classes from "./page.module.css";
-import { IProduct } from "@/app/product.interface";
+import { IProduct } from "@/product.interface";
 import { useRouter } from "next/navigation";
 import FormInput from "./FormInput";
 

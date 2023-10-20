@@ -1,7 +1,7 @@
 import { ProductContext } from "@/app/product.context";
 import Link from "next/link";
 import { useContext } from "react";
-import { IProduct } from "../product.interface";
+import { IProduct } from "../../product.interface";
 import classes from './page.module.css';
 
 // NOTE: given product-fixtures.json has two items with the same id.
