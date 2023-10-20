@@ -35,12 +35,12 @@ export const ProductContextProvider = ({ children }) => {
     }
   };
 
-  const filter = (color) => {
+  const filter = (colors) => {
     let filteredProducts;
-    if (!color || color === '') {
+    if (!Array.isArray(colors) || colors.length === 0) {
       filteredProducts = [...allProducts];
     } else {
-      filteredProducts = allProducts?.filter((product) => product.color === color);
+      filteredProducts = allProducts?.filter((product) => colors.includes(product.color));
     }
     setProducts(filteredProducts)
   }

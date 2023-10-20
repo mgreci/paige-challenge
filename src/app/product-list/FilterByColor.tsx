@@ -34,10 +34,11 @@ export default function FilterByColor() {
 		<div className={classes.filterSection}>
 			<label htmlFor="colorFilter">Filter by Color</label>
 			{colorOptions?.map((color) => (
-				<input key={color} type="checkbox" defaultChecked={false} onChange={event => handleChangeFilterOptions(color, event.target.value)} />
+				<input key={color} type="checkbox" onChange={event => handleChangeFilterOptions(color, event.target.value)} />
 			))}
-			<button type="button" onClick={handleFilterProducts}>Filter</button>
-			<button type="button" onClick={resetFilter}>Reset</button>
+			<div>
+				<button type="button" onClick={resetFilter}>Reset</button>
+			</div>
 		</div>
 	);
 }
