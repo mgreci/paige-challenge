@@ -37,7 +37,9 @@ export default function ProductList({ }) {
 								<td>{type}</td>
 								<td>{price}</td>
 								<td>
-									<button type="button"><Link href={`/product-detail/${sku}`}>Edit</Link></button>
+									<Link href={`/product-detail/${sku}`}>
+										<button type="button">Edit</button>
+									</Link>
 								</td>
 							</tr>
 						))}
