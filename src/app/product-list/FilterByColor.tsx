@@ -1,33 +1,34 @@
 import { ProductContext } from "@/app/product.context";
 import { useContext, useState } from "react";
 import classes from './page.module.css';
+import { removeDuplicates } from "@/util";
 
 export default function FilterByColor() {
 	const { colorOptions, filter }: { colorOptions: Array<string>, filter: Function} = useContext(ProductContext)!;
-	const [filterByColors, setFilterByColors] = useState([]);
+	const [filterByColors, setFilterByColors]: [Array<string>, Function] = useState([]);
 
 	const handleChangeFilterOptions = (color: string, checked: boolean) => {
+		let updatedFilterByColors;
 		if (checked) {
 			filterByColors.push(color);
-			setFilterByColors([...new Set(filterByColors)]);
+			updatedFilterByColors = removeDuplicates(filterByColors);
 		} else {
 			let filterByColorsCopy = [...filterByColors];
-			const index = filterByColors.findIndex(color);
+			const index = filterByColors.findIndex(option => option === color);
 			if (index > -1) {
 				filterByColorsCopy.splice(index, 1);
 			}
-			setFilterByColors([...new Set(filterByColorsCopy)]);
+			updatedFilterByColors = removeDuplicates(filterByColorsCopy);
 		}
-	};
 
-	const handleFilterProducts = () => {
-		filter([...filterByColors]);
+		setFilterByColors(updatedFilterByColors);
+		filter(updatedFilterByColors);
 	};
 
 	const resetFilter = () => {
 		setFilterByColors([]);
 		filter([]);
-	}
+	};
 
 	return (
 		<div className={classes.filterSection}>
