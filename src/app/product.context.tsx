@@ -5,12 +5,21 @@ import { createContext, useState } from 'react';
 // NOTE: possible typo in that there are two objects with the same id value.
 import allProducts from './product-fixtures.json';
 import { removeDuplicates } from '@/util';
+import { IProduct } from './product.interface';
 
-let colorOptions = [];
+type ProductContextType = {
+  products: IProduct[];
+  colorOptions: string[];
+  searchBySku: (sku: string) => void;
+  update: (id: string, newProduct: IProduct) => void;
+  filter: (colors: string[]) => void;
+};
+
+let colorOptions: string[] = [];
 allProducts.forEach(({ color }) => colorOptions.push(color));
 colorOptions = removeDuplicates(colorOptions);
 
-export const ProductContext = createContext({
+export const ProductContext = createContext<ProductContextType>({
   products: [],
   colorOptions: [],
   searchBySku: () => {},
@@ -18,14 +27,14 @@ export const ProductContext = createContext({
   filter: () => {}
 });
 
-export const ProductContextProvider = ({ children }) => {
-  const [products, setProducts] = useState(allProducts);
+export const ProductContextProvider = ({ children }: { children: any }) => {
+  const [products, setProducts] = useState<IProduct[]>(allProducts);
 
-  const searchBySku = (searchSku) => {
+  const searchBySku = (searchSku: string) => {
     return products?.find(({ sku }) => searchSku === sku);
   }
 
-  const update = (productId, newProduct) => {
+  const update = (productId: string, newProduct: IProduct) => {
     // validate newProduct?
   
     // find index
@@ -39,7 +48,7 @@ export const ProductContextProvider = ({ children }) => {
     }
   };
 
-  const filter = (colors) => {
+  const filter = (colors: string[]) => {
     let filteredProducts;
     if (!Array.isArray(colors) || colors.length === 0) {
       filteredProducts = [...allProducts];
@@ -49,9 +58,5 @@ export const ProductContextProvider = ({ children }) => {
     setProducts(filteredProducts)
   }
 
-  return (
-    <ProductContext.Provider value={{ products, colorOptions, searchBySku, update, filter }}>
-			{children}
-		</ProductContext.Provider>
-  );
+  return <ProductContext.Provider value={{ products, colorOptions, searchBySku, update, filter }}>{children}</ProductContext.Provider>
 };
