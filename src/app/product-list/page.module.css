@@ -10,6 +10,14 @@
 	margin-bottom: 1rem;
 }
 
+.colorFilter {
+	margin-bottom: 0.25rem;
+}
+
+.colorFilterLabel {
+	margin-left: 0.5rem;
+}
+
 .table {
 	width: 100%;
 	text-align: left;

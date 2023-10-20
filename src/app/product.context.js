@@ -4,6 +4,11 @@ import { createContext, useState } from 'react';
 
 // NOTE: possible typo in that there are two objects with the same id value.
 import allProducts from './product-fixtures.json';
+import { removeDuplicates } from '@/util';
+
+let colorOptions = [];
+allProducts.forEach(({ color }) => colorOptions.push(color));
+colorOptions = removeDuplicates(colorOptions);
 
 export const ProductContext = createContext({
   products: [],
@@ -15,7 +20,6 @@ export const ProductContext = createContext({
 
 export const ProductContextProvider = ({ children }) => {
   const [products, setProducts] = useState(allProducts);
-  const colorOptions = [];
 
   const searchBySku = (searchSku) => {
     return products?.find(({ sku }) => searchSku === sku);
